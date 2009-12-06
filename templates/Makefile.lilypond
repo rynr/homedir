@@ -1,0 +1,13 @@
+# Assert name of main lilypond file to be <PROJECT>.ly
+PROJECT = name_of_project
+SOURCES = $(PROJECT).ly additional_file.ly
+
+$(PROJECT).pdf: $(SOURCES)
+	lilypond $<
+
+view: $(PROJECT).pdf
+	evince $(PROJECT).pdf
+
+clean:
+	rm -rf $(PROJECT).midi $(PROJECT).pdf $(PROJECT).ps
+
