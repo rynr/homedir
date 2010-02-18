@@ -19,6 +19,7 @@ set laststatus=2             " always show the status line
 set ruler                    " show position in status line
                              " formatting of status line:
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%02v]
+match DiffAdd '\%>80v.*'
 
 set list                     " highlite tabs
 set listchars=tab:>-,trail:- " show tabs like >---
