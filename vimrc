@@ -1,6 +1,7 @@
 " Install the following plugins:
 " Rubytest.vim http://www.vim.org/scripts/script.php?script_id=2612
 " rails.vim    http://www.vim.org/scripts/script.php?script_id=1567
+" fugitive.vim http://www.vim.org/scripts/script.php?script_id=2975
 
 set nocompatible             " using vim-style
 set noerrorbells             " i don't like beeps
