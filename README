@@ -4,3 +4,13 @@ homedir
   From time to time i get a new machine or loose some configuration.
   Here i store my dotfiles for the environment i'm used to. Feel free 
   to use snippets if you like them.
+
+Adblock Filters (written here at the moment):
+[Adblock Plus 1.1]
+! Checksum: mcBitzLqcijQXTMMy2ci3g
+||ivwbox.de^
+||fbcdn.net^$domain=~facebook.com|~facebook.net|~fbcdn.com|~fbcdn.net
+||fbcdn.com^$domain=~facebook.com|~facebook.net|~fbcdn.com|~fbcdn.net
+||facebook.net^$domain=~facebook.com|~facebook.net|~fbcdn.com|~fbcdn.net
+||facebook.com^$domain=~facebook.com|~facebook.net|~fbcdn.com|~fbcdn.net
+|http://api.flattr.com/js/*/load.js
