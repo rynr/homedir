@@ -20,7 +20,17 @@ set incsearch                " highlite searchresults while typing
 set laststatus=2             " always show the status line
 set ruler                    " show position in status line
                              " formatting of status line:
-set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%02v]
+set statusline=%F%m%r%h%w[%L][%{&ff}]%{fugitive#statusline()}%y[%p%%][%04l,%02v]
+
+set shiftwidth=2
+set softtabstop=2
+if has("autocmd")
+  " Enable file type detection.
+  " Use the default filetype settings, so that mail gets 'tw' set to 72,
+  " 'cindent' is on in C files, etc.
+  " Also load indent files, to automatically do language-dependent indenting.
+  filetype plugin indent on
+endif
 
 set list                     " highlite tabs
 set listchars=tab:>-,trail:- " show tabs like >---
