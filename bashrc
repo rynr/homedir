@@ -14,5 +14,6 @@ function parse_git_dirty {
   [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
 }
 
-PS1='${debian_chroot:+($debian_chroot)}\u:\w$(__git_ps1 "[%s$(parse_git_dirty)]")\$ '
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 "[\[\e[0;32m\]%s\[\e[0m\]\[\e[0;33m\]$(parse_git_dirty)\[\e[0m\]]")\$ '
+#PS1='${debian_chroot:+($debian_chroot)}\u:\w$(__git_ps1 "[%s$(parse_git_dirty)]")\$ '
+#PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 "[\[\e[0;32m\]%s\[\e[0m\]\[\e[0;33m\]$(parse_git_dirty)\[\e[0m\]]")\$ '
+PS1="${debian_chroot:+($debian_chroot)}\`if [[ \$? = "0" ]]; then echo '\e[32m\A\e[0m'; else echo '\e[31m\A\e[0m' ; fi\` \[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 "[\[\e[0;32m\]%s\[\e[0m\]\[\e[0;33m\]$(parse_git_dirty)\[\e[0m\]]")\$ "
