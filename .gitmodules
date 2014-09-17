@@ -1,0 +1,12 @@
+[submodule "modules/ntp"]
+	path = modules/ntp
+	url = https://github.com/puppetlabs/puppetlabs-ntp.git
+[submodule "modules/apt"]
+	path = modules/apt
+	url = https://github.com/puppetlabs/puppetlabs-apt.git
+[submodule "modules/stdlib"]
+	path = modules/stdlib
+	url = https://github.com/puppetlabs/puppetlabs-stdlib.git
+[submodule "modules/git"]
+	path = modules/git
+	url = https://github.com/puppetlabs/puppetlabs-git.git

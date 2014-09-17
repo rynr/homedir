@@ -1,0 +1,39 @@
+classes:
+  - ntp
+  - apt::release
+  - apt
+
+packages:
+  git:
+    ensure: latest
+  gitk:
+    ensure: latest
+  vim:
+    ensure: latest
+
+ntp::servers:
+  - 0.de.pool.ntp.org
+  - 1.de.pool.ntp.org
+  - 2.de.pool.ntp.org
+  - 3.de.pool.ntp.org
+
+apt::update_timeout: 5000
+apt::release::release_id: 'wheezy'
+
+apt::sources:
+  'debian_stable':
+    location: 'http://ftp2.de.debian.org/debian'
+    release: 'wheezy'
+    repos: 'main contrib non-free'
+    required_packages: 'debian-keyring debian-archive-keyring'
+    key: '55BE302B'
+    key_server: 'subkeys.pgp.net'
+    pin: '-10'
+    include_src: 'true'
+    include_deb: 'true'
+
+  'puppetlabs':
+    location: 'http://apt.puppetlabs.com'
+    repos: 'main'
+    key: '4BD6EC30'
+    key_server: 'pgp.mit.edu'
