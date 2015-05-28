@@ -4,6 +4,9 @@ PACKAGES="openssh-server git gitk vim"
 VIMPLUGINS="https://github.com/tpope/vim-fugitive                        \
             https://github.com/tpope/vim-rails"
 
+########################################################################
+# Debian/Ubuntu
+########################################################################
 echo "Checking for sudo permission"
 if sudo -l; then
   echo -e "Sudo access is \e[32mavailable\033[0m"
@@ -28,7 +31,9 @@ for package in $PACKAGES; do
   fi
 done
 
+########################################################################
 # Configure vim
+########################################################################
 echo "Checking (and installing) vim packages"
 if [ ! -d $HOME/.vim/bundle   ]; then mkdir -p $HOME/.vim/bundle; fi
 if [ ! -d $HOME/.vim/autoload ]; then mkdir -p $HOME/.vim/autoload; fi
