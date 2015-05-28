@@ -30,7 +30,19 @@ done
 
 # Configure vim
 echo "Checking (and installing) vim packages"
-if [ ! -d $HOME/.vim/bundle ]; then mkdir -p $HOME/.vim/bundle; fi
+if [ ! -d $HOME/.vim/bundle   ]; then mkdir -p $HOME/.vim/bundle; fi
+if [ ! -d $HOME/.vim/autoload ]; then mkdir -p $HOME/.vim/autoload; fi
+echo -e -n "Checking for pathogen .."
+if [ -f $HOME/.vim/autoload/pathogen.vim ]; then
+  echo -e " \e[32mOK\033[0m"
+else
+  echo -n " installing .."
+  if curl -s https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim > $HOME/.vim/autoload/pathogen.vim; then
+    echo -e " \e[32mOK\033[0m"
+  else
+    echo -e " \e[31mfail\033[0m"
+  fi
+fi
 for source in $VIMPLUGINS; do
   package=`basename $source`
   echo -e -n "Checking for $package .."
