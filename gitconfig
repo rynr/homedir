@@ -1,2 +1,9 @@
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[color]
+	ui = auto
+[push]
+	default = matching
+[user]
+	name = Rainer Jung
+	email = Rainer.Jung@gmail.com

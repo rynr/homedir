@@ -84,3 +84,18 @@ for source in $VIMPLUGINS; do
   fi
 done
 
+########################################################################
+# Configure git
+########################################################################
+echo -e -n "Checking for gitconfig .."
+if [ -f $HOME/.gitconfig ]; then
+  echo -e " \e[32mOK\033[0m"
+else
+  echo -n " installing .."
+  if curl -s $BASE_URL/gitconfig > $HOME/.gitconfig; then
+    echo -e " \e[32mOK\033[0m"
+  else
+    echo -e " \e[31mfail\033[0m"
+  fi
+fi
+
