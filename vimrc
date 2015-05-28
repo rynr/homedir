@@ -1,7 +1,3 @@
-" Install the following plugins:
-" Rubytest.vim http://www.vim.org/scripts/script.php?script_id=2612
-" rails.vim    http://www.vim.org/scripts/script.php?script_id=1567
-
 set nocompatible             " using vim-style
 set noerrorbells             " I don't like beeps
 set expandtab                " I don't like tabs

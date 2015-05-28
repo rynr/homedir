@@ -6,9 +6,13 @@
 #########################################################################
 
 BASE_URL=https://raw.githubusercontent.com/rynr/homedir/master
-PACKAGES="openssh-server git gitk vim curl"
-VIMPLUGINS="https://github.com/tpope/vim-fugitive                        \
-            https://github.com/tpope/vim-rails"
+PACKAGES="openssh-server
+          git gitk
+          vim
+          curl"
+VIMPLUGINS="https://github.com/tpope/vim-fugitive
+            https://github.com/tpope/vim-rails
+            https://github.com/janx/vim-rubytest"
 
 ########################################################################
 # Debian/Ubuntu
