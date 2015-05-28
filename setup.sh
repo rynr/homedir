@@ -1,5 +1,10 @@
 #!/bin/bash
 
+#########################################################################
+# This setup script can be run with:
+# > curl https://raw.githubusercontent.com/rynr/homedir/master/setup.sh | bash
+#########################################################################
+
 BASE_URL=https://raw.githubusercontent.com/rynr/homedir/master
 PACKAGES="openssh-server git gitk vim curl"
 VIMPLUGINS="https://github.com/tpope/vim-fugitive                        \
