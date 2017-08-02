@@ -1,3 +1,5 @@
+export EDITOR=vim
+
 # Add some paths to PATH if available
 for dir in $HOME/usr/bin \
            $HOME/bin
@@ -9,11 +11,44 @@ done
 # temporarily generate directory and chdir (requires pwgen)
 alias tmpdir='tmpdir=/tmp/`pwgen`; mkdir $tmpdir; cd $tmpdir'
 
-# Used for prompt
-function parse_git_dirty {
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+set_prompt()
+{
+   local last_cmd=$?
+   local txtreset='$(tput sgr0)'
+   local txtbold='$(tput bold)'
+   local txtblack='$(tput setaf 0)'
+   local txtred='$(tput setaf 1)'
+   local txtgreen='$(tput setaf 2)'
+   local txtyellow='$(tput setaf 3)'
+   local txtblue='$(tput setaf 4)'
+   local txtpurple='$(tput setaf 5)'
+   local txtcyan='$(tput setaf 6)'
+   local txtwhite='$(tput setaf 7)'
+   # unicode "✗"
+   local fancyx='\342\234\227'
+   # unicode "✓"
+   local checkmark='\342\234\223'
+   # Line 1: Full date + full time (24h)
+   # Line 2: current path
+   PS1="\[$txtbold\]\[$txtblue\]\D{%H:%M} "
+   # User color: red for root, yellow for others
+   if [[ $EUID == 0 ]]; then
+       PS1+="\[$txtred\]"
+   else
+       PS1+="\[$txtyellow\]"
+   fi
+   # Line 3: user@host
+   PS1+="\u\[$txtwhite\]:"
+   PS1+="\[$txtgreen\]\w "
+   # Line 4: a red "✗" or a green "✓" and the error number
+   if [[ $last_cmd == 0 ]]; then
+      PS1+="\[$txtgreen\]$checkmark\[$txtwhite\] "
+   else
+      PS1+="\[$txtred\]$fancyx\[$txtwhite\] "
+   fi
+   # Line 4: green git branch
+   PS1+="\[$txtgreen\]$(__git_ps1 '(%s) ')\[$txtwhite\]"
+   # Line 4: good old prompt, $ for user, # for root
+   PS1+="\\$\[$txtreset\] "
 }
-
-#PS1='${debian_chroot:+($debian_chroot)}\u:\w$(__git_ps1 "[%s$(parse_git_dirty)]")\$ '
-#PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 "[\[\e[0;32m\]%s\[\e[0m\]\[\e[0;33m\]$(parse_git_dirty)\[\e[0m\]]")\$ '
-PS1="${debian_chroot:+($debian_chroot)}\`if [[ \$? = "0" ]]; then echo '\e[32m\A\e[0m'; else echo '\e[31m\A\e[0m' ; fi\` \[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 "[\[\e[0;32m\]%s\[\e[0m\]\[\e[0;33m\]$(parse_git_dirty)\[\e[0m\]]")\$ "
+PROMPT_COMMAND='set_prompt'
