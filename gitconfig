@@ -2,8 +2,13 @@
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [color]
 	ui = auto
+[commit]
+	gpgsign = true
+[credential]
+	helper = cache --timeout=34500
 [push]
 	default = matching
 [user]
 	name = Rainer Jung
 	email = Rainer.Jung@gmail.com
+	signingkey = 622949492A808694653438FFD140BEC9605AF6B5
